@@ -1,0 +1,17 @@
+.frase{
+    font-size: 20px;
+    
+}
+
+.cDigitacao{
+    font-size: 20px;
+    height: 140px;
+}
+
+.desativa-fundo-cor{
+    background-color: lightgray;
+}
+
+.icone{
+    vertical-align: middle;
+}
