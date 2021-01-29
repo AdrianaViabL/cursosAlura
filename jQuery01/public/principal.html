@@ -10,8 +10,7 @@
 <body>
     <div class="container">
         <h1 class="center">Curso Typer</h1>
-        <p class="frase center">Lorem ipsum, dolor sit amet consectetur
-            adipisicing elit. Perferendis, magnam nostrum quas repellat assumenda unde aperiam sit audantium ipsum eaque quisquam magni xercitationem modi itaque maiores aliquid esse sunt? Ad?
+        <p class="frase">testando
         </p>
         <ul class="informacoes center">
             <li>
@@ -25,14 +24,36 @@
         </ul>
 
         <textarea class="cDigitacao" cols="30" rows="10"></textarea>
-        <button id="btReiniciar">Reiniciar jogo</button>
+
+        <div class="botoes">
+            <button class="btn-floating btn-large waves-effect waves-light red" id="btReiniciar"><i class="material-icons">restore</i></button>
+        </div>
 
         <ul class="center">
             <li><span id="contCaracteres">0</span> caracteres</li>
             <li><span id="contPalavras">0</span> palavras</li>
         </ul>
+        <section class="placar">
+            <h3 class="center">Placar</h3>
+            <table class="centered bordered">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Nr. de palavras</th>
+                        <th>Remover?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>cccc</td>
+                    <td>10</td>
+                    <td> <a href="#" class="btnRemover"><i class="small material-icons">delete</i></a>
+                    </td>
+                </tbody>
+            </table>
+        </section>
     </div>
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/placar.js"></script>
 </body>
 </html>
