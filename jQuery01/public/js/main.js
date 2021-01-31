@@ -73,7 +73,7 @@ function inicializaContadores(){
 
 function reiniciaJogo(){
     campo.attr('disabled', false)
-    campo.val(' ')
+    campo.val('')
     campo.toggleClass('desativa-fundo-cor')
     campo.removeClass('borda-correto')
     campo.removeClass('borda-errado')
