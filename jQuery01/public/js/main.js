@@ -1,7 +1,10 @@
+//Para rodar o servidor com o nodejs (depois de instalar o nodejs), va na pasta do servidor e no terminal digite 'npm start'
+
 //var frase = jQuery('.frase') //é a mesma coisa que usar o $ para acessar a informação dentro do DOM
 var tmpInicial = $('#temDigita').text()
 var campo = $('.cDigitacao')
 var btnReiniciar = $('#btReiniciar')
+var btntxtAleatorio = $('#btnFrase')
 
 
 //um atalho para o $(document).ready(function(){})
@@ -16,11 +19,15 @@ $(function(){//deixando todas as chamadas de funções para depois de a pagina t
 
 function atualizaTamFrases(){
     var frase = $('.frase').text()
-    var tamFrase = frase.split(' ').length
-    var listFrase = $('#tamFrase').text(tamFrase)
+    var tamFrase = frase.split(/\S+/).length -1
+    var listFrase = $('#tamFrase')
+    listFrase.text(tamFrase)
 }
 //$('.cDigitacao').click(function(){}) = uma segunda forma de acessar os dados dentro da textarea
-
+function atuTempoInicial(tempo){
+    tmpInicial = tempo
+    $('#temDigita').text(tempo)
+}
 
 function atualizaContadores(){
     campo.on('input', function(){
@@ -34,6 +41,7 @@ function atualizaContadores(){
 function contRegressiva(){
     btnReiniciar.attr('disabled', true)
     campo.one('focus', function(){//focus - detecta quando o campo entra em 'foco'(é acessado via click ou com o uso do TAB)
+        btntxtAleatorio.attr('disabled', true)
         var tempoFim = $("#temDigita").text()
         var cronID = setInterval(function(){
             tempoFim--
@@ -51,12 +59,13 @@ function fimJogo(){
     campo.attr('disabled', true)//adicionando um valor na tag textarea
     campo.toggleClass('desativa-fundo-cor')
     btnReiniciar.attr('disabled', false)
+    btntxtAleatorio.attr('disabled', false)
     inserePlacar()
 }
 
 function inicializaContadores(){
-    var frase = $('.frase').text()
     campo.on('input', function(){   
+        var frase = $('.frase').text()
         var digitado = campo.val()
         var comparavel = frase.substr(0, digitado.length)
 
