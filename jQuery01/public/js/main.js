@@ -5,6 +5,7 @@ var tmpInicial = $('#temDigita').text()
 var campo = $('.cDigitacao')
 var btnReiniciar = $('#btReiniciar')
 var btntxtAleatorio = $('#btnFrase')
+var btnFraseID = $('#btnFraseID')
 
 
 //um atalho para o $(document).ready(function(){})
@@ -42,6 +43,7 @@ function contRegressiva(){
     btnReiniciar.attr('disabled', true)
     campo.one('focus', function(){//focus - detecta quando o campo entra em 'foco'(é acessado via click ou com o uso do TAB)
         btntxtAleatorio.attr('disabled', true)
+        btnFraseID.attr('disabled', true)
         var tempoFim = $("#temDigita").text()
         var cronID = setInterval(function(){
             tempoFim--
@@ -60,6 +62,7 @@ function fimJogo(){
     campo.toggleClass('desativa-fundo-cor')
     btnReiniciar.attr('disabled', false)
     btntxtAleatorio.attr('disabled', false)
+    btnFraseID.attr('disabled', false)
     inserePlacar()
 }
 

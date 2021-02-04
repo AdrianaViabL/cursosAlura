@@ -36,3 +36,10 @@ body{
     color: red;
     display: none;
 }
+#spinner{
+    display: none;
+}
+
+#fraseID{
+    width: 40px;
+}

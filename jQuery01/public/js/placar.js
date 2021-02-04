@@ -1,4 +1,5 @@
 $('#btPlacar').click(mostraPlacar)
+$('#btnSync').click(sincronizaPlacar)
 
 function inserePlacar(){
     var tabela = $('.placar').find('tbody')
@@ -53,4 +54,27 @@ function removeLinha(event){
 
 function mostraPlacar(){
     $('.placar').stop().slideToggle()
+}
+
+function sincronizaPlacar(){
+    var placar = []
+    var linhas = $('tbody > tr')
+    linhas.each(function(){
+        var usuario = $(this).find('td:nth-child(1)').text()//procurando no primeiro td dentro do tr
+        var qtdPalavras = $(this).find('td:nth-child(2)').text()
+
+        var score = {
+            usuario: usuario,
+            pontos: qtdPalavras
+        }
+        placar.push(score)
+    })
+    
+    //criando o objeto para ser enviado pelo AJAX
+    var dados = {
+        placar: placar
+    }
+    $.post('http://localhost:3000/placar', dados, function(){
+        console.log('deu certo O.o')
+    })
 }
