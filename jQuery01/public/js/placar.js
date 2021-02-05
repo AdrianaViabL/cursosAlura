@@ -3,7 +3,7 @@ $('#btnSync').click(sincronizaPlacar)
 
 function inserePlacar(){
     var tabela = $('.placar').find('tbody')
-    var usuario = 'Adriana'
+    var usuario = $('#usuarios').val()
     var nPalavras = $('#contPalavras').text()
     //dessa forma esta sendo criado uma string que sera adicionada dentro da tabela, mas precisamos de um e
     //var btnRemover = '<a href=""><i class="material-icons">delete</i></a>'
@@ -69,12 +69,21 @@ function sincronizaPlacar(){
         }
         placar.push(score)
     })
-    
+
     //criando o objeto para ser enviado pelo AJAX
     var dados = {
         placar: placar
     }
-    $.post('http://localhost:3000/placar', dados, function(){
-        console.log('deu certo O.o')
+    $.post('http://localhost:3000/placar', dados, function(){})
+}
+
+function atualizaPlacar(){
+    $.get('http://localhost:3000/placar', function(data){
+        //data.each(function(){ <- dessa forma dará errado pois a variavel data nao tem acesso aos comandos do jquery, devemos envolver ela para que se tenha acesso
+        $(data).each(function(){
+            var linha = novaLinha(this.usuario, this.pontos)
+            linha.find('.btnRemover').click(removeLinha)
+            $('tbody').append(linha)
+        })
     })
 }

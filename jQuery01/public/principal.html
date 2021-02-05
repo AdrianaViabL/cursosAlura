@@ -5,6 +5,8 @@
     <title>Curso Typer</title>
     <link rel="stylesheet" href="css/libs/google-fonts.css">
     <link rel="stylesheet" href="css/libs/materialize.min.css">
+    
+    <link rel="stylesheet" href="css/libs/selectize.default.css">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
@@ -54,6 +56,13 @@
             </button>
             <input type="number" min="0" id="fraseID">
 
+            <div class="selUsuario">
+                <select id="usuarios">
+                    <option value="Adriana">Adriana</option>
+                    <option value="Joãozinho">Joãozinho</option>
+                    <option value="Mariazinha">Mariazinha</option>
+                </select>
+            </div>
             <button class="btn-floating btn-large waves-effect waves-light yellow right" id="btnSync">
                 <i class="material-icons">swap_vert</i>
             </button>
@@ -74,10 +83,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <td>cccc</td>
-                    <td>10</td>
-                    <td> <a href="#" class="btnRemover"><i class="small material-icons">delete</i></a>
-                    </td>
+
                 </tbody>
             </table>
         </section>
@@ -86,5 +92,6 @@
     <script src="js/main.js"></script>
     <script src="js/placar.js"></script>
     <script src="js/frase.js"></script>
+    <script src="js/selectize.js"></script>
 </body>
 </html>

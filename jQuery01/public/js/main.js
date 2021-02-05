@@ -16,6 +16,11 @@ $(function(){//deixando todas as chamadas de funções para depois de a pagina t
     contRegressiva()
     btnReiniciar.click(reiniciaJogo)
     $('table').find('.btnRemover').click(removeLinha)//precisou dessa linha pros dados do HTML serem apagados O.o
+    atualizaPlacar()
+    $('#usuarios').selectize({
+        create: true,
+        sortField: 'text'
+    })
 })
 
 function atualizaTamFrases(){
