@@ -74,7 +74,28 @@ function sincronizaPlacar(){
     var dados = {
         placar: placar
     }
-    $.post('http://localhost:3000/placar', dados, function(){})
+    $.post('http://localhost:3000/placar', dados, function(){
+    //minha solução
+    $('#btnSync').tooltipster('open').tooltipster('content', 'Sucesso ao sincronizar')
+    }).fail(function(){
+        $('#btnSync').tooltipster('open').tooltipster('content', 'falha ao sincronizar')
+        setTimeout(function(){
+            $('#btnSync').tooltipster('close').tooltipster('content', 'Sincronizar')
+        }, 1500)
+    }).always(function(){
+        setTimeout(function(){
+            $('#btnSync').tooltipster('close').tooltipster('content', 'Sincronizar')
+        }, 1500)
+
+    // forma usada no curso - tambem tem que descomentar no main o start dessa biblioteca
+    //     $('.tooltip').tooltipster('open').tooltipster('content', 'Sucesso ao sincronizar')
+    // }).fail(function(){
+    //     $('.tooltip').tooltipster('open').tooltipster('content', 'falha ao sincronizar')
+    // }).always(function(){
+    //     setTimeout(function(){
+    //         $('.tooltip').tooltipster('close')
+    //     }, 1000)
+    })
 }
 
 function atualizaPlacar(){

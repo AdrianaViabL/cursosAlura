@@ -21,6 +21,11 @@ $(function(){//deixando todas as chamadas de funções para depois de a pagina t
         create: true,
         sortField: 'text'
     })
+
+    $('.tooltip').tooltipster({
+        //solução do curso
+        //trigger: 'custom'
+    });
 })
 
 function atualizaTamFrases(){
