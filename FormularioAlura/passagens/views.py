@@ -9,4 +9,7 @@ def index(request):
 
 
 def review_consulta(request):
-    pass
+    if request.method == 'POST':
+        form = PassagemForms(request.POST)
+        contexto = {'form':form}
+        return render(request, 'consulta.html', contexto)
