@@ -3,17 +3,23 @@ from tempus_dominus.widgets import DatePicker
 from datetime import datetime
 from passagens.classe_viagem import tipos_de_classes
 from passagens.validation import *
+from passagens.models import Passagem, ClasseViagem, Pessoa
 
 
-class PassagemForms(forms.Form):
-    origem = forms.CharField(label='origem', max_length=100)
-    destino = forms.CharField(label='destino', max_length=100)
-    data_ida = forms.DateField(label='Ida', widget=DatePicker())
-    data_volta = forms.DateField(label='Volta', widget=DatePicker())
-    data_pesquisa = forms.DateField(label='Data da pesquisa', disabled=True, initial=datetime.today())
-    classe_viagem = forms.ChoiceField(label='Classe do vôo', choices=tipos_de_classes)
-    informacoes = forms.CharField(label='Informações extras', max_length=200, widget=forms.Textarea(), required=False)
-    email = forms.EmailField(label='Email', max_length=100)
+class PassagemForms(forms.ModelForm):
+    data_pesquisa = forms.DateField(label='Data de pesquisa', disabled=True, initial=datetime.today())
+    class Meta: #classe responsável por manipular o modelo para gerar o formulário
+        model = Passagem
+        fields = '__all__'
+        labels = {'data_ida': 'Data de ida',
+                  'data_volta': 'Data de volta',
+                  'informacoes': 'Informações'
+                  }
+
+        widgets = {
+            'data_ida': DatePicker(),
+            'data_volta': DatePicker()
+        }
 
     def clean(self):
         origem = self.cleaned_data.get('origem')
@@ -32,3 +38,8 @@ class PassagemForms(forms.Form):
                 mensagem = lista_erros[erro]
                 self.add_error(erro, mensagem)
         return self.cleaned_data
+
+class PessoaForms(forms.ModelForm):
+    class Meta:
+        model = Pessoa
+        exclude = ['nome'] #ele traz todos os campos menos os especificados aqui
