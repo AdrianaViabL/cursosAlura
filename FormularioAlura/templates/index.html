@@ -1,0 +1,28 @@
+{% extends 'body.html' %}
+
+{% block corpo %}
+    {% load widget_tweaks %}
+    <section class="container col-8">
+        <form action="{% url 'consulta' %}" method="POST" class="mt-3">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field|add_class:'form-control' }}
+                </div>
+                {% for error in field.errors %}
+                    <section class="alert alert-danger" role="alert">
+                        {{ field.errors }}
+                    </section>
+                {% endfor %}
+            {% endfor %}
+            {% for field in pessoa_form.visible_fields %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field|add_class:'form-control' }}
+                </div>
+            {% endfor %}
+            <input type="submit" value="OK" class="btn btn-success d-inline">
+        </form>
+    </section>
+{% endblock %}
