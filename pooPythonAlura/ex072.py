@@ -6,8 +6,12 @@ extenso = ('zero', 'um', 'dois', 'tres', 'quatro', 'cinco', 'seis', 'sete', 'oit
            'dezenove', 'vinte')
 num = 0
 
-print('digite 99 para sair')
-print('digite 99 para sair')
+print('digite um numero entre 0 e 20 \n')
+print('digite 99 para sair \n')
 while num != 99:
+    num = int(input('digite um numero = '))
     if num > 21 or num < 0:
-        print('Tente novamente.')
+        if num != 99:
+            print('Tente novamente.')
+    else:
+        print(extenso[num])
