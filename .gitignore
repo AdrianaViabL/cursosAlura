@@ -1,0 +1,14 @@
+.DS_Store
+.env
+.idea
+.coverage
+*.sqlite3
+*pyc
+__pycache__
+venv
+cover
+staticfiles
+media
+wsgi.py
+api.ini
+*.ini
