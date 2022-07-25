@@ -1,10 +1,11 @@
 class Conta:
 
-    def __init__(self, numero, titular, saldo, limite):
+    def __init__(self, numero, titular, saldo, limite, codigo_banco='001'):
         self.__numero = numero
         self.__titular = titular
         self.__saldo = saldo
         self.__limite = limite
+        self.__codigo_banco = codigo_banco
 
     def extrato(self):
         print(f'Saldo de {self.__saldo} do titular {self.__titular}')
@@ -26,13 +27,13 @@ class Conta:
         self.sacar(valor=valor)
         destino.depositar(valor=valor)
 
-    def get_saldo(self): # forma mais simples de acessar os dados de uma variavel encapsulada
+    def get_saldo(self):  # forma mais simples de acessar os dados de uma variavel encapsulada
         return self.__saldo
 
     def get_titular(self):
         return self.__titular
 
-    @property # transformando esse metodo em uma propriedade da variavel limite, podendo ser acessado sem precisar do
+    @property  # transformando esse metodo em uma propriedade da variavel limite, podendo ser acessado sem precisar do
     # () no final
     def limite(self):
         return self.__limite
@@ -40,3 +41,7 @@ class Conta:
     @limite.setter
     def limite(self, valor):
         self.__limite = valor
+
+    @staticmethod  # transformando em um metodo estatico, ou seja, pode ser acessado sem a criação do objeto Conta
+    def codigo_banco():
+        return '001'
