@@ -15,15 +15,21 @@ class Programa:
     def nome(self):
         return self._nome
 
-    @nome.setter  # definindo como os valores serao atribuidos a variavel nome
+    @nome.setter  # definindo como os valores serao atribuidos a variavel nome (especialização)
     def nome(self, new_nome):
         self._nome = new_nome.title()
 
+    def imprime(self):
+        print(f'{self._nome} - {self.ano} - {self._likes} likes')
+
 
 class Filme(Programa):
-    def __init__(self, nome, ano, duracao):
-        super().__init__(nome, ano)
+    def __init__(self, nome, ano, duracao):  # sobrepondo o init da classe mae, mas...
+        super().__init__(nome, ano)  # ainda usando parte do que é trazido da herança
         self.duracao = duracao
+
+    def imprime(self):
+        print(f'{self._nome} - {self.ano} - duração: {self.duracao} - {self._likes} likes')
 
 
 class Serie(Programa):
@@ -31,13 +37,18 @@ class Serie(Programa):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
+    def imprime(self):
+        print(f'{self._nome} - {self.ano} - temporadas: {self.temporadas} - {self._likes} likes')
 
 
 vingadores = Filme('vingadores - guerra infinita', 2018, 160)
-print(f'Nome: {vingadores.nome} - Ano: {vingadores.ano} '
-f'- Duração: {vingadores.duracao}, Likes = {vingadores.likes}')
 
 atlanta = Serie('atlanta', 2018, 2)
+atlanta.dar_like()
 
-print(f'Nome: {atlanta.nome} - Ano: {atlanta.ano} '
-f'- Temporadas: {atlanta.temporadas}, Likes = {atlanta.likes}')
+print('==='*50)
+movies_and_serie = [atlanta, vingadores]
+for program in movies_and_serie:
+    program.imprime()
+
+print('==='*50)
