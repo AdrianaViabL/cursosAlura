@@ -7,6 +7,7 @@ def jogar_forca():
     enforcou = False
     acertou = False
 
+    # enquanto
     while not enforcou and not acertou:
         chute = input("digite uma letra: ")
         index = 0

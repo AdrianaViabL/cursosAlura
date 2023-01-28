@@ -19,8 +19,8 @@ class Programa:
     def nome(self, new_nome):
         self._nome = new_nome.title()
 
-    def imprime(self):
-        print(f'{self._nome} - {self.ano} - {self._likes} likes')
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - {self._likes} likes'
 
 
 class Filme(Programa):
@@ -28,8 +28,8 @@ class Filme(Programa):
         super().__init__(nome, ano)  # ainda usando parte do que é trazido da herança
         self.duracao = duracao
 
-    def imprime(self):
-        print(f'{self._nome} - {self.ano} - duração: {self.duracao} - {self._likes} likes')
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - duração: {self.duracao} - {self._likes} likes'
 
 
 class Serie(Programa):
@@ -37,18 +37,33 @@ class Serie(Programa):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
-    def imprime(self):
-        print(f'{self._nome} - {self.ano} - temporadas: {self.temporadas} - {self._likes} likes')
+    def __str__(self):  # representação textual da parte do codigo
+        return f'{self._nome} - {self.ano} - temporadas: {self.temporadas} - {self._likes} likes'
+
+
+class Playlist(list):
+    def __init__(self, nome, programas):
+        self.nome = nome
+        super().__init__(programas)
 
 
 vingadores = Filme('vingadores - guerra infinita', 2018, 160)
-
 atlanta = Serie('atlanta', 2018, 2)
+demolidor = Serie('Demolidor', 2018, 3)
+atlantis = Filme('atlantis', 2005, 95)
 atlanta.dar_like()
+atlantis.dar_like()
+atlantis.dar_like()
+demolidor.dar_like()
+demolidor.dar_like()
+demolidor.dar_like()
 
 print('==='*50)
-movies_and_serie = [atlanta, vingadores]
-for program in movies_and_serie:
-    program.imprime()
+movies_and_serie = [atlanta, vingadores, demolidor, atlantis]
+
+weekend_list = Playlist('fim de semana', movies_and_serie)
+print(type(movies_and_serie))
+for program in weekend_list:
+    print(program)
 
 print('==='*50)
