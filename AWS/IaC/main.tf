@@ -20,12 +20,13 @@ resource "aws_instance" "app_server" {
   key_name = "iac-teste"
   user_data = <<-EOF
                  #!/bin/bash - codigo bash a ser executado
-                  #esse codigo vai: criar um arquivo index.html com um codigo html dentro na pasta home/ubuntu
-                 cd home/ubuntu
-                 echo "<h1>Feito com Terraform</h1>" > index.html
+                 # esse codigo vai: criar um arquivo index.html com um codigo html dentro na pasta home/ubuntu 
+                 # Obs.: o parametro user_data so executa na CRIAÇÃO da instancia, qualquer alteração futura não será vista dentro da instancia
+                 # para isso deve-se (nesse caso) excluir essa instancia (terraform destroy) e criar ele novamente
+                 echo "<h1>Feito com Terraform 123</h1>" > index1.html
                  nohup busybox httpd -f -p 8080
                  EOF
   tags = {
-    Name = "Second instance"
+    Name = "Second Second instance"
   }
 }
