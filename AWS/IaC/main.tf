@@ -24,8 +24,9 @@ resource "aws_instance" "app_server" {
                  # Obs.: o parametro user_data so executa na CRIAÇÃO da instancia, qualquer alteração futura não será vista dentro da instancia
                  # para isso deve-se (nesse caso) excluir essa instancia (terraform destroy) e criar ele novamente
                  echo "<h1>Feito com Terraform</h1>" > index.html
-                 nohup busybox httpd -f -p 8080 &
+                 #nohup busybox httpd -f -p 8080 &
                  EOF
+  user_data_replace_on_change = true
   tags = {
     Name = "Second instance"
   }
