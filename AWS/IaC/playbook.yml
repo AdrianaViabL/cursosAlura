@@ -1,0 +1,6 @@
+- hosts: terraform-ansible
+  tasks:
+    - name: criando arquivo
+      copy:
+        dest: home/ec2-user/index.html
+        content: <h1> Feito com terraform e ansible</h1>
