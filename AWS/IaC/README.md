@@ -39,6 +39,8 @@ Obs.: o ansible nao funciona diretamente no windows, um aluno da Alura ajudou ne
 https://www.youtube.com/watch?v=tX-PPvDAtKo - Como instalar o Ubuntu como subsistema do Windows e instalar o Ansible
 https://www.youtube.com/watch?v=L_xReF3_iCE - Como usar o Ansible em um subsistema Linux do Windows (como instalar na descrição)
 
+Obs.: dentro da vm que vai ser criada do ubuntu dentro do windows, deve ser adicionando o ```sudo``` antes do comando abaixo (e esse deve ser executado dentro da pasta do projeto IaC)
+
 ```
 ansible-playbook playbook.yml -u ubuntu --private-key iac-teste.pem -i hosts.yml
 ```

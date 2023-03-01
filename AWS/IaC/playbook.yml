@@ -1,6 +1,9 @@
 - hosts: terraform-ansible
   tasks:
-    - name: criando arquivo
-      copy:
-        dest: home/ec2-user/index.html
-        content: <h1> Feito com terraform e ansible</h1>
+    - name: instalando python3 e virtualenv
+      apt:
+        pkg: 
+        - python3
+        - virtualenv
+      update_cache: yes
+      become: true
